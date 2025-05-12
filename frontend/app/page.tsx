@@ -40,11 +40,11 @@ export default function Home() {
 
   const updateBalance = async (address: string) => {
     try {
-      const provider = new ethers.BrowserProvider(window.ethereum);
+      const provider = new ethers.BrowserProvider(window.ethereum!);
       const contract = new ethers.Contract(TIRP_ADDRESS, TIRP_ABI, provider);
       const balance = await contract.balanceOf(address);
       setBalance(ethers.formatEther(balance));
-      
+
       const maxBuyAmount = await contract.maxBuyAmount();
       setMaxBuy(ethers.formatEther(maxBuyAmount));
     } catch (error) {
