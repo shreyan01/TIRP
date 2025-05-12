@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { Web3Button } from '@web3modal/react';
-import Image from 'next/image';
 
 // Contract ABI - we'll need to add this after compiling the contract
 const TIRP_ABI = [
