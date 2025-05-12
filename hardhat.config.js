@@ -1,26 +1,25 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
+/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: {
-    version: "0.8.20",
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200
-      }
-    }
-  },
+  solidity: "0.8.20",
   networks: {
+    bscTestnet: {
+      url: process.env.BSC_TESTNET_RPC_URL,
+      chainId: 97,
+      accounts: [process.env.PRIVATE_KEY],
+    },
     bscMainnet: {
-      url: "https://bsc-dataseed.binance.org/",
+      url: process.env.BSC_MAINNET_RPC_URL,
       chainId: 56,
       accounts: [process.env.PRIVATE_KEY],
-      gasPrice: 5000000000,
-      gas: 2100000
     }
   },
   etherscan: {
-    apiKey: process.env.BSCSCAN_API_KEY
+    apiKey: {
+      bscTestnet: process.env.BSCSCAN_API_KEY,
+      bsc: process.env.BSCSCAN_API_KEY
+    }
   }
 };
